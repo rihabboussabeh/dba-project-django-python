@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+    
+    
+    /*
+    DEMO STYLE
+*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:rgba(22, 58, 126, 0.555);
+  color: white;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: rgba(22, 58, 126, 0.555);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: rgba(22, 58, 126, 0.555);
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+.wrapper {
+    display: flex;
+    align-items: stretch;
+    perspective: 1500px;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+    transform-origin: bottom left;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+    transform: rotateY(100deg);
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #6d7fcc;
+}
+
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+    content: '\e259';
+    display: block;
+    position: absolute;
+    right: 20px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 0.6em;
+}
+a[aria-expanded="true"]::before {
+    content: '\e260';
+}
+
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article, a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#content {
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+#sidebarCollapse {
+    width: 40px;
+    height: 40px;
+    background: #f5f5f5;
+}
+
+#sidebarCollapse span {
+    width: 80%;
+    height: 2px;
+    margin: 0 auto;
+    display: block;
+    background: #555;
+    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+    transition-delay: 0.2s;
+}
+
+#sidebarCollapse span:first-of-type {
+    transform: rotate(45deg) translate(2px, 2px);
+}
+#sidebarCollapse span:nth-of-type(2) {
+    opacity: 0;
+}
+#sidebarCollapse span:last-of-type {
+    transform: rotate(-45deg) translate(1px, -1px);
+}
+
+
+#sidebarCollapse.active span {
+    transform: none;
+    opacity: 1;
+    margin: 5px auto;
+}
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+        transform: rotateY(90deg);
+    }
+    #sidebar.active {
+        margin-left: 0;
+        transform: none;
+    }
+    #sidebarCollapse span:first-of-type,
+    #sidebarCollapse span:nth-of-type(2),
+    #sidebarCollapse span:last-of-type {
+        transform: none;
+        opacity: 1;
+        margin: 5px auto;
+    }
+    #sidebarCollapse.active span {
+        margin: 0 auto;
+    }
+    #sidebarCollapse.active span:first-of-type {
+        transform: rotate(45deg) translate(2px, 2px);
+    }
+    #sidebarCollapse.active span:nth-of-type(2) {
+        opacity: 0;
+    }
+    #sidebarCollapse.active span:last-of-type {
+        transform: rotate(-45deg) translate(1px, -1px);
+    }
+
+}
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    * {
+  box-sizing: border-box;
+}
+
+section {
+  max-width: 770px;
+  width: 100%;
+  margin: 1rem auto;
+ 
+  height: 630px;
+  padding: 10px;
+  padding-top: 67px;
+}
+
+.diagram {
+  justify-content: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.left, .right {
+  flex: 1;
+}
+
+.left {
+  margin-right: 60px;
+}
+
+.box {
+  width: 174.58px;
+  height: 75px;
+  position: relative;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+  border: solid 1px #e8e8e8;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.one, .six {
+  margin-bottom: 30px;
+}
+
+.three, .four {
+  margin-bottom: 60px;
+}
+
+.box-16 {
+  margin-bottom: 16px;
+}
+
+.box-mleft {
+  margin-left: 76px;
+}
+
+.one::after, .six::after {
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  height: 341px;
+  width: 7px;
+  top: 101%;
+  left: 20px;
+}
+
+.six::after {
+  height: 435.7px;
+}
+
+.three::after,
+.five::after,
+.eight::after,
+.nine::after,
+.ten::after,
+.eleven::after,
+.twolve::after {
+  height: 7px;
+  width: 34px;
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: calc(100% + 15px);
+}
+
+.three::before,
+.five::before,
+.eight::before,
+.nine::before,
+.ten::before,
+.eleven::before,
+.twolve::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7.5px 0 7.5px 15px;
+  border-color: transparent transparent transparent #cacaca;
+}
+
+.four::before {
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  width: 7px;
+  position: absolute;
+  height: 45px;
+  bottom: calc(100% + 15px);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.four::after {
+  position: absolute;
+  content: '';
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15px 7.5px 0 7.5px;
+  border-color: #cacaca transparent transparent transparent;
+}
+
+.two::after, .seven::after {
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: calc(100% + 15px);
+  width: 7px;
+  height: 330px;
+}
+
+.seven::after {
+  height: 422px;
+}
+
+.two::before, .seven::before {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 7.5px 15px 7.5px;
+  border-color: transparent transparent #cacaca transparent;
+  content: '';
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: 100%;
+}
+
+.box-inside {
+  width: 100%;
+  height: 100%;
+}
+
+.five .box-inside::after,
+.four .box-inside::after,
+.two .box-inside::after,
+.eight .box-inside::after,
+.nine .box-inside::after,
+.ten .box-inside::after,
+.eleven .box-inside::after,
+.twolve .box-inside::after {
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  height: 7px;
+  width: 25px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 100%;
+}
+
+.two .box-inside::after {
+  width: 45px;
+}
+
+.five .box-inside::before,
+.four .box-inside::before,
+.two .box-inside::before,
+.eight .box-inside::before,
+.nine .box-inside::before,
+.ten .box-inside::before,
+.eleven .box-inside::before,
+.twolve .box-inside::before {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7.5px 0 7.5px 15px;
+  border-color: transparent transparent transparent #cacaca;
+  content: '';
+  left: calc(100% + 25px);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  position: absolute;
+}
+
+.two .box-inside::before {
+  left: calc(100% + 45px);
+}
+
+.seven .box-inside::before {
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  height: 45px;
+  width: 7px;
+  bottom: 100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.seven .box-inside::after {
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  height: 7px;
+  width: 662px;
+  bottom: calc(100% + 45px);
+  right: 47%;
+}
+
+.one .box-inside::after {
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  height: 30px;
+  width: 7px;
+  bottom: calc(100% + 15px);
+  left: 14px;
+}
+
+.one .box-inside::before {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15px 7.5px 0 7.5px;
+  border-color: #cacaca transparent transparent transparent;
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 10px;
+}
+
+header {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 10px;
+  background-color: greenyellow;
+  font-weight: 600;
+  padding: 2px 0;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 9px;
+  text-align: center;
+  margin: 8px 0;
+}
+
+.number {
+  text-align: center;
+  font-size: 24px;
+}
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+        <div class="wrapper">
+                <!-- Sidebar Holder -->
+                <nav id="sidebar">
+                  <div class="sidebar-header">
+                    <h3>Tables</h3>
+                  </div>
+               
+                 
+                  <ul class="list-unstyled components">
+               
+                      {% for k in tables %}
+                    <li class="active">
+                     
+                      <a href="#homeSubmenu"  aria-expanded="false">    {{k}}</a>
+                  
+                    </li>   {% endfor %} 
+     
+
+                    
+                  </ul>
+                  <div class="sidebar-header">
+                    <h3>Views</h3>
+                  </div>
+                  <ul class="list-unstyled components">
+               
+                    {% for vi in views %}
+                  <li class="active">
+                   
+                    <a href="#homeSubmenu"  aria-expanded="false">    {{vi}}</a>
+                
+                  </li>   {% endfor %} 
+   
+                 
+                   </ul>
+                   <div class="sidebar-header">
+                    <h3>SEQUENCE</h3>
+                  </div>
+                  <ul class="list-unstyled components">
+               
+                    {% for sq in seq %}
+                  <li class="active">
+                   
+                    <a href="#homeSubmenu"  aria-expanded="false">    {{sq}}</a>
+                
+                  </li>   {% endfor %} 
+   
+                 
+                   </ul>
+
+                   <div class="sidebar-header">
+                    <h3>index</h3>
+                  </div>
+                  <ul class="list-unstyled components">
+               
+                    {% for in in index %} 
+                  <li class="active">
+                   
+                    <a href="#homeSubmenu"  aria-expanded="false">    {{in}}</a>
+                
+                  </li>   {% endfor %} 
+   
+                 
+                   </ul>
+                  
+                   
+                  <div class="sidebar-header">
+                    <h3>PROCEDURE</h3>
+                  </div>
+                  <ul class="list-unstyled components">
+               
+                    {% for p in proc %} 
+                  <li class="active">
+                   
+                    <a href="#homeSubmenu"  aria-expanded="false">    {{p}}</a>
+                
+                  </li>   {% endfor %} 
+                      
+                   </ul>
+                   <div class="sidebar-header">
+                    <h3>TRIGGER</h3>
+                  </div>
+                  <ul class="list-unstyled components">
+               
+                    {% for p in proc %} 
+                  <li class="active">
+                   
+                    <a href="#homeSubmenu"  aria-expanded="false">    {{p}}</a>
+                
+                  </li>   {% endfor %} 
+                      
+                   </ul>
+               
+               
+          
+                </nav>
+          
+               
+                <!-- Page Content Holder -->
+                <div id="content" style="margin: 5%;">
+
+
+
+
+
+
+                        <section>
+                            <div class="sidebar-header">
+                                <h3 style="color:rgb(10, 10, 68)">Tables et Colonnes</h3>
+                              </div>
+  
+ 
+                            <table id="customers">
+                                <tr>
+            {% for k in tables %}<th>    {{k}} </th>{% endfor %} 
+                               
+                                </tr>
+                                                            
+                               
+                                <tr>
+             {% for f in colunms %}  <td> {{f}} </td>{% endfor %} 
+                                  
+                                </tr>
+                              
+                                
+                              </table>
+                                  
+                               
+
+<br><br>
+
+
+                      <!--     <table id="customers">
+                                  <tr>
+                                      <th>index</th>
+                                      <th>views</th>
+                                      <th> SEQUENCE</th>
+                                      <th> PROCEDURE</th>
+                                      <th> TRIGGER</th>
+                                 
+                                  </tr>
+                                 
+                                 
+                                 
+                                  <tr>
+                                      <td>  {% for in in index %} {{in}} {% endfor %}  </td>
+                                      <td>   {% for vi in views %}  {{vi}}  {% endfor %}</td> 
+                                      <td>   {% for sq in seq %}  {{sq}}  {% endfor %}</td> 
+                                      <td>   {% for p in proc %}  {{p}}  {% endfor %}</td> 
+                                      <td>   {% for t in tig %}  {{t}}  {% endfor %}</td>
+                                    
+                                  </tr>
+                                  <tr>
+                                  
+                                </table>     
+                     
+                -->   
+                               
+                             
+
+
+                                <form  method="POST">
+                                    <div class="sidebar-header">
+                                        <h3 style="color:rgb(10, 10, 68)">Requête</h3>
+                                      </div> 
+                                  {% csrf_token %}
+                                  {{ req }}
+                                  
+                                  <table id="customers">
+                                 
+                                 
+                                     {% for vo in l %} <tr>   <td>{{vo}}</td>  </tr> {% endfor %}
+                                   
+                                
+                        
+                                   
+                                 <br>
+                                  <br>
+                                 
+                                  <input type="submit" value="Résultat">
+                              </form>
+
+
+                            
+ 
+</body>
+</html>

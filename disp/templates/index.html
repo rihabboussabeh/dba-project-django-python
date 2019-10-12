@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+<style>
+
+
+    * {
+  box-sizing: border-box;
+}
+
+section {
+  max-width: 770px;
+  width: 100%;
+  margin: 1rem auto;
+  border: 1px solid lightgray;
+  height: 630px;
+  padding: 10px;
+  padding-top: 67px;
+}
+
+.diagram {
+  justify-content: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.left, .right {
+  flex: 1;
+}
+
+.left {
+  margin-right: 60px;
+}
+
+.box {
+  width: 150px;
+  height: 75px;
+  position: relative;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+  border: solid 1px #e8e8e8;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.one, .six {
+  margin-bottom: 30px;
+}
+
+.three, .four {
+  margin-bottom: 60px;
+}
+
+.box-16 {
+  margin-bottom: 16px;
+}
+
+.box-mleft {
+  margin-left: 76px;
+}
+
+.one::after, .six::after {
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  height: 341px;
+  width: 7px;
+  top: 101%;
+  left: 20px;
+}
+
+.six::after {
+  height: 435.7px;
+}
+
+.three::after,
+.five::after,
+.eight::after,
+.nine::after,
+.ten::after,
+.eleven::after,
+.twolve::after {
+  height: 7px;
+  width: 34px;
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: calc(100% + 15px);
+}
+
+.three::before,
+.five::before,
+.eight::before,
+.nine::before,
+.ten::before,
+.eleven::before,
+.twolve::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7.5px 0 7.5px 15px;
+  border-color: transparent transparent transparent #cacaca;
+}
+
+.four::before {
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  width: 7px;
+  position: absolute;
+  height: 45px;
+  bottom: calc(100% + 15px);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.four::after {
+  position: absolute;
+  content: '';
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15px 7.5px 0 7.5px;
+  border-color: #cacaca transparent transparent transparent;
+}
+
+.two::after, .seven::after {
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: calc(100% + 15px);
+  width: 7px;
+  height: 330px;
+}
+
+.seven::after {
+  height: 422px;
+}
+
+.two::before, .seven::before {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 7.5px 15px 7.5px;
+  border-color: transparent transparent #cacaca transparent;
+  content: '';
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: 100%;
+}
+
+.box-inside {
+  width: 100%;
+  height: 100%;
+}
+
+.five .box-inside::after,
+.four .box-inside::after,
+.two .box-inside::after,
+.eight .box-inside::after,
+.nine .box-inside::after,
+.ten .box-inside::after,
+.eleven .box-inside::after,
+.twolve .box-inside::after {
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  height: 7px;
+  width: 25px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 100%;
+}
+
+.two .box-inside::after {
+  width: 45px;
+}
+
+.five .box-inside::before,
+.four .box-inside::before,
+.two .box-inside::before,
+.eight .box-inside::before,
+.nine .box-inside::before,
+.ten .box-inside::before,
+.eleven .box-inside::before,
+.twolve .box-inside::before {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7.5px 0 7.5px 15px;
+  border-color: transparent transparent transparent #cacaca;
+  content: '';
+  left: calc(100% + 25px);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  position: absolute;
+}
+
+.two .box-inside::before {
+  left: calc(100% + 45px);
+}
+
+.seven .box-inside::before {
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  height: 45px;
+  width: 7px;
+  bottom: 100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.seven .box-inside::after {
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  height: 7px;
+  width: 662px;
+  bottom: calc(100% + 45px);
+  right: 47%;
+}
+
+.one .box-inside::after {
+  background-color: #cacaca;
+  position: absolute;
+  content: '';
+  height: 30px;
+  width: 7px;
+  bottom: calc(100% + 15px);
+  left: 14px;
+}
+
+.one .box-inside::before {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15px 7.5px 0 7.5px;
+  border-color: #cacaca transparent transparent transparent;
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 10px;
+}
+
+header {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 10px;
+  background-color: greenyellow;
+  font-weight: 600;
+  padding: 2px 0;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 9px;
+  text-align: center;
+  margin: 8px 0;
+}
+
+.number {
+  text-align: center;
+  font-size: 24px;
+}
+
+</style>
+
+</head>
+<body>
+    <section>
+
+        <div class="diagram flex">
+     
+    
+         <div class="left">
+          <div class="flex space-between">
+              {% for table in colunms %}
+           <div class="box one">
+           
+            <div class="box-inside">
+
+             <header>
+           
+             </header>
+
+                    <div class="body">
+                      {% for c in table %}
+                      <div class="title">{{c}}</div>
+                      {% endfor %}
+                
+                    </div>
+            </div>
+           </div> {% endfor %}  
+          
+            
+       
+       </section>
+</body>
+</html>
